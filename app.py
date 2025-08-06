@@ -6,17 +6,6 @@ A professional deep learning web app using EfficientNetB0 for binary image class
 import streamlit as st
 import sys
 import os
-import gdown
-
-# Path and URL to your model
-MODEL_PATH = "efficientnetb0_cat_dog_classifier.h5"
-MODEL_URL = "https://drive.google.com/uc?export=download&id=1YucE0YxT0iDXPGXK83NoL7c5ht4g9q1Q"
-
-# Download the model if it doesn't exist
-if not os.path.exists(MODEL_PATH):
-    with st.spinner("📥 Downloading model from Google Drive... Please wait."):
-        gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
-        st.success("✅ Model downloaded successfully!")
 
 # Add the current directory to Python path for imports
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))

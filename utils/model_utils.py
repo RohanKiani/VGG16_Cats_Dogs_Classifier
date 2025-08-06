@@ -10,32 +10,35 @@ import os
 # Class labels (update these to match your training labels)
 CLASS_NAMES = ['Cat', 'Dog']  # Adjust order based on your training
 
+import gdown
+
 @st.cache_resource
 def load_model():
     """
-    Load the trained VGG16 model with caching
+    Load the trained Vgg16 model from Google Drive if not already present.
     
     Returns:
         tensorflow.keras.Model: Loaded model
     """
     try:
         model_path = "vgg16_cat_dog_classifier.h5"
+        model_url = "https://drive.google.com/uc?export=download&id=1YucE0YxT0iDXPGXK83NoL7c5ht4g9q1Q"
         
-        # Check if model file exists
+        # Download the model if it's not already present
         if not os.path.exists(model_path):
-            st.error(f"❌ Model file not found: {model_path}")
-            st.error("Please ensure the model file is in the same directory as app.py")
-            return None
+            with st.spinner("📥 Downloading model from Google Drive... Please wait."):
+                gdown.download(model_url, model_path, quiet=False)
+                st.success("✅ Model downloaded successfully!")
         
         # Load the model
         model = keras.models.load_model(model_path)
-        
-        # Display model info in console (for debugging)
+
+        # Display model info in console
         print(f"📊 Model input shape: {model.input_shape}")
         print(f"📊 Model output shape: {model.output_shape}")
         
         return model
-        
+
     except Exception as e:
         st.error(f"❌ Error loading model: {str(e)}")
         return None
