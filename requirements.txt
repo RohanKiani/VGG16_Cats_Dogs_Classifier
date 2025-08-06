@@ -6,3 +6,4 @@ matplotlib                # For visualizations
 streamlit==1.28.1         # Web app framework
 scikit-learn              # For metrics like accuracy/confusion matrix
 opencv-python==4.8.1.78   # for image manipulation
+gdown
