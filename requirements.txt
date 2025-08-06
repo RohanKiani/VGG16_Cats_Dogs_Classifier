@@ -1,4 +1,4 @@
-tensorflow==2.18.0        # Core ML framework
+tensorflow==2.20.0        # Core ML framework
 keras==3.8.0              # High-level API for TensorFlow
 numpy                     # For numerical operations
 pillow                    # For image processing
